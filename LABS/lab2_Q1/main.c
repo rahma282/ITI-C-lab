@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "conio.h"
 
 int main()
 {
@@ -10,24 +11,38 @@ int main()
       printf("invalid size please input odd numbers only: ");
         return 1; // out of the program
       }
-      int curRow =0 , curCol=n/2;
+      int curRow =1 , curCol=(n+1)/2;
       int totalN = n*n;
 
-      for (int i=1; i<=totalN; i++){
-        if (i ==1){
-        //put a 1 in the middle of the first row
-        curRow=0;
-        curCol = 1;
-      }
-      else if (i % n !=0){
-            //decrement row -1 and col -1;
-         curRow= (curRow -1 + n) %n;
-         curCol = (curCol -1 +n )%n;
-      }
+      for(int i=1; i<=totalN; i++){
+            if (i==1){
+                curRow =0;
+
+            }
+
+        if (i % n !=0){
+            //decrement row -1 and col -1;              *   *   *
+         curRow= curRow--;      //                      *   *   *
+         curCol = curCol--;         //                  *   *   *
+         if(curRow < 1)
+            curRow=n;
+         if(curCol < 1)
+            curCol=n;
+        }
       else {
           //cur %n ==0 //increment row +1
-      curRow = (curRow +1 )%n;
+      curRow++;
+      if(curRow > n)
+        curRow=1;
       }
-      return 0;
-}
+     for (int i = 0; i < n*n; i++)
+    {
+        for (int j = 0; j < n *n; j++)
+        {printf("%d" , i);
+     printf("\n");
+            printf("%d  ", a[i][j]);
+        }
+        printf("\n");
+    }
+     return 0;
 }

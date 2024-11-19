@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1732024398 source:/home/rahma/Documents/c_labs/Lab2/LABS/lab2_Q1/main.c
+	<stdio.h>
+	<stdlib.h>
+	"conio.h"
+
+1731965758 /home/rahma/Documents/c_labs/Lab2/LABS/lab2_Q1/conio.h
+	<termios.h>
+	<unistd.h>
+	<stdio.h>
+	<fcntl.h>
+	<stdlib.h>
+	<string.h>
+
