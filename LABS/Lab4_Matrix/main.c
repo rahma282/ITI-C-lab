@@ -15,9 +15,20 @@ int main()
     for (int j = 0; j < COL; j++)
         {
              printf("Enter element [%d,%d]: ", i, j);
+<<<<<<< HEAD
 
                  while (scanf("%d%c", &value, &ch) != 2 || ch != '\n') {
                 // Clear the input buffer of any invalid data
+=======
+<<<<<<< HEAD
+             while (scanf("%d%c", &value, &ch) != 2 || ch != '\n') {  
+                // Clear the input buffer of any invalid data  char or num+char 
+=======
+
+                 while (scanf("%d%c", &value, &ch) != 2 || ch != '\n') {
+                // Clear the input buffer of any invalid data
+>>>>>>> 4674bac (update menu)
+>>>>>>> ed986b0 (update DBMenu)
                 while (getchar() != '\n');
                 printf("Invalid input! Please enter a valid integer: ");
             }

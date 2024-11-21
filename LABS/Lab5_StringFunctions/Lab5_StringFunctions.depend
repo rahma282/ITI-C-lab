@@ -1,8 +1,19 @@
 # depslib dependency file v1.0
+<<<<<<< HEAD
 1732146850 source:/home/rahma/Documents/c_labs/Lab2/LABS/Lab5_StringFunctions/main.c
 	<stdio.h>
 	<stdlib.h>
 	"strinFunctions.h"
 
 1732146692 /home/rahma/Documents/c_labs/Lab2/LABS/Lab5_StringFunctions/strinFunctions.h
+=======
+1732184833 source:/home/rahma/Documents/c_labs/Lab2/LABS/Lab5_StringFunctions/main.c
+	<stdio.h>
+	<stdlib.h>
+	"strFunction.h"
+
+1732178477 /home/rahma/Documents/c_labs/Lab2/LABS/Lab5_StringFunctions/strinFunctions.h
+
+1732185555 /home/rahma/Documents/c_labs/Lab2/LABS/Lab5_StringFunctions/strFunction.h
+>>>>>>> ed986b0 (update DBMenu)
 

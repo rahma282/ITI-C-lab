@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1732213454 source:/home/rahma/Documents/c_labs/Lab2/LABS/Lab5_DBmenu/main.c
+	<stdio.h>
+	<stdlib.h>
+	<termios.h>
+	<unistd.h>
+	<time.h>
+	"mina.h"
+
+1732149746 /home/rahma/Documents/c_labs/Lab2/LABS/Lab5_DBmenu/mina.h
+	<windows.h>
+	<io.h>
+	<unistd.h>
+	<termios.h>
+
