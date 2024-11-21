@@ -225,6 +225,11 @@ void delay(int number_of_seconds) {
     nanosleep(&req, NULL);  // Delay for 1.5 seconds*/
 }
 #endif
+#define UP 65
+#define DOWN 66
+#define ENTER 10
+#define SKIP 27
+#define BACKSPACE 127
 int main(){
 const int menuSize = 3;
     const char menu[5][8] = {"New", "Display", "Exit"};
@@ -246,22 +251,46 @@ const int menuSize = 3;
 
         // begin logic for arrow movement
         ch_in = getch();
-        if (ch_in == '\033'){
-            getch(); // skip '['
+        if (ch_in == SKIP){
+            getch(); // skip ']'
             switch(getch()) {
-                case 'A': // up
+                case UP: // up
                     selected = (selected - 1 + menuSize) % menuSize; //new position
                     break;
-                case 'B': // down
-                    selected = (selected + 1) % menuSize;  
+                case DOWN: // down
+                    selected = (selected + 1) % menuSize;
                     break;
             }
-        } else if (ch_in == '\n') {
-            if (selected == menuSize - 1) { // if Exit is selected
+        } else if (ch_in == ENTER) {
+            if (selected == 2) { // if Exit is selected
+                system("clear");
                 setTextColor(stdout, TC_WHITE);
                 printf("Exit program\n");
                 return 1;
             }
+
+            if (selected == 0){  //new
+                system("clear");
+                setTextColor(stdout, TC_WHITE);
+                printf("New\n");
+
+                if(getch() == BACKSPACE){
+                system("clear");
+                }
+
+            }
+
+
+            if (selected == 1){ //Dispaly
+                system("clear");
+                setTextColor(stdout, TC_WHITE);
+                printf("Display\n");
+
+                if(getch() == BACKSPACE){
+                system("clear");
+                }
+            }
+
         }
     }
     return 0;

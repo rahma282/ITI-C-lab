@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1732107848 source:/home/rahma/Documents/c_labs/Lab2/LABS/lab3_menu/main.c
+	<stdio.h>
+	<stdlib.h>
+	<termios.h>
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	<io.h>
+	<unistd.h>
+	<termios.h>
+
