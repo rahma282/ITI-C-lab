@@ -1,32 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define ROW 3
+#define COL 4
 void print();
 
 int main()
 {
-    int row = 3, col = 4,sumOfEveryRows=0,sumOfCols=0;
+    int sumOfEveryRows=0,sumOfCols=0;
     int value;
-    int matrix[row][col];
-    for (int i = 0; i < row; i++)
+    char ch;
+    int matrix[ROW][COL];
+    for (int i = 0; i < ROW; i++)
     {
-    for (int j = 0; j < col; j++)
+    for (int j = 0; j < COL; j++)
         {
              printf("Enter element [%d,%d]: ", i, j);
-             while (scanf("%d", &value) != 1) {
+
+                 while (scanf("%d%c", &value, &ch) != 2 || ch != '\n') {
                 // Clear the input buffer of any invalid data
                 while (getchar() != '\n');
                 printf("Invalid input! Please enter a valid integer: ");
             }
             matrix[i][j] = value;
         }
+
     }
         printf("\n");
 
     print();
 
-    for (int i = 0; i < row; i++)
+    for (int i = 0; i < ROW; i++)
     {
-    for (int j = 0; j < col; j++)
+    for (int j = 0; j < COL; j++)
         {
              printf("%d\t", matrix[i][j]);
         }
@@ -34,24 +39,24 @@ int main()
     }
    print();
 
-    for (int i = 0; i < row; i++)
+    for (int i = 0; i < ROW; i++)
     {
         sumOfEveryRows=0;
-        for (int j = 0; j < col; j++)
+        for (int j = 0; j < COL; j++)
         {
             sumOfEveryRows+=matrix[i][j];  //sum of every rows
     }
         printf("sum of row %d: %d\n",i,sumOfEveryRows);
         print();
     }
-    for (int j=0; j<col; j++){
+    for (int j=0; j<COL; j++){
             sumOfCols=0;
-        for (int i=0; i<row; i++){
+        for (int i=0; i<ROW; i++){
             sumOfCols+=matrix[i][j];  //sum of columns
 
         }
         //printf("sum of col %d: %d\n",j,sumOfCols);
-        printf("average of each column %d\n",sumOfCols/row);  //average of cols
+        printf("average of column %d:%d\n",j,sumOfCols/ROW);  //average of cols
     }
 
     return 0;

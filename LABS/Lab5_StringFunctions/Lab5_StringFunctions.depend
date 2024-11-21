@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1732146850 source:/home/rahma/Documents/c_labs/Lab2/LABS/Lab5_StringFunctions/main.c
+	<stdio.h>
+	<stdlib.h>
+	"strinFunctions.h"
+
+1732146692 /home/rahma/Documents/c_labs/Lab2/LABS/Lab5_StringFunctions/strinFunctions.h
+
