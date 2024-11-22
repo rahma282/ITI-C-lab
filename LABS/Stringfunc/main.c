@@ -1,58 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
-<<<<<<< HEAD
-#include "strinFunctions.h"
-//int StringLength(char str[]);
-//void StringConcat(char dest[], char source[]);
-
-int main() {
-
-    char str[20]="rahma";
-
-    int len = StringLength(str);
-    printf("%d\n", len);
-
-    char source[10]=" mostafa";
-    StringConcat(str,source);
-    printf("%s\n",str);
-
-    return 0;
-}
-/*
-int StringLength(char str[]) {
-    int length = 0;
-
-    while (str[length] != '\0') {
-=======
-#include "stringFunctions.h"
-
+#include "stringFunc.h"
 #define TERMINATOR '\0'
 #define DESTSIZE 25
 int main() {
 
-    char str[20]="RAhma";
+    char str[20]="RAHMA";
     char source[10]=" mostafa";
     char dest [DESTSIZE] ="sara";
 
     int len = StringLength(str);
     printf("length = %d\n", len);
 
+    print();
     StringConcat(str,source);
     printf("%s\n",str);
+
+    print();
 
     toLower(str);
     printf("stringlowercase: ");
     printf("%s\n", str);
 
+    print();
 
-    toUpper(str);
+    toUpper(source);
     printf("stringuppercase: ");
     printf("%s\n", source);
 
+    print();
     printf("Before Copy dest = %s\n",dest);
     StringCopy(dest,source,DESTSIZE);
     printf("After Copy dest = %s\n",dest);
 
+    print();
     char s1[20] = "help";
     char s2[20] = "help";
 
@@ -66,21 +47,10 @@ int StringLength(char str[]) {
     int length = 0;
 
     while (str[length] != TERMINATOR) {
->>>>>>> ed986b0 (update DBMenu)
         length++;
     }
     return length;
 }
-<<<<<<< HEAD
-*//*
-void StringConcat(char dest[], char source[]){
-    int i=0; //rahma
-    int j=0; //mostafa
-    while (dest[i] !='\0'){
-        i++;
-    }
-    while (source[j] !='\0'){
-=======
 //concat function
 void StringConcat(char dest[], char source[]){
     int i=0;
@@ -89,16 +59,10 @@ void StringConcat(char dest[], char source[]){
         i++;
     }
     while (source[j] != TERMINATOR){
->>>>>>> ed986b0 (update DBMenu)
         dest[i]=source[j];
         i++;
         j++;
     }
-<<<<<<< HEAD
-    dest[i] ='\0';
-}
-*/
-=======
     dest[i] =TERMINATOR;
 }
 //toLower
@@ -161,5 +125,10 @@ int compareString(char str[] ,char str2[]){
 
 	return 0;
 }
+void print(){
+    printf("---------------------------------------------------------------------\n");
+}
 
->>>>>>> ed986b0 (update DBMenu)
+
+
+

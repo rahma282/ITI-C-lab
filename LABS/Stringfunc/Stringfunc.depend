@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1732233550 source:/home/rahma/Documents/c_labs/Lab2/LABS/Stringfunc/main.c
+	<stdio.h>
+	<stdlib.h>
+	"stringFunc.h"
+
+1732233528 /home/rahma/Documents/c_labs/Lab2/LABS/Stringfunc/stringFunc.h
+
