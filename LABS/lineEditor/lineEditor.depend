@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1732484155 source:/home/rahma/Documents/CLABS/C_LABS/lineEditor/main.c
+	<stdio.h>
+	<stdlib.h>
+	<termios.h>
+	<unistd.h>
+	<unistd.h>
+	<time.h>
+	"mina.h"
+
+1732380074 /home/rahma/Documents/CLABS/C_LABS/lineEditor/mina.h
+	<windows.h>
+	<io.h>
+	<unistd.h>
+	<termios.h>
+
