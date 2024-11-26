@@ -70,7 +70,7 @@ int main()
         } else if (ch_in == BACKSPACE) {  //normal keys
             deleteCharBeforCursor(&ptr);
         } else if (ch_in == ENTER) {
-            break;  // Exit
+            return 0;  // Exit
         } else {
             insert(&ptr,ch_in);
         }
