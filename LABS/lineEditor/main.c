@@ -145,9 +145,9 @@ void deleteCharAfterCursor(linePtr *ptr){
     }
 }
 void insert(linePtr *ptr,char ch){            //first click stand into char ,if input any char overwrite current char
-     if (ptr->tail < line + SIZE - 1) {  // if there space in the array
+     if (ptr->tail < line + SIZE - 1) {      // if there space in the array
         if (ptr->current < ptr->tail) {
-            line[ptr->current] = ch;  // overwrite current character
+            line[ptr->current] = ch;        // overwrite current character
         } else {
             line[ptr->current] = ch;
             ptr->tail++;
