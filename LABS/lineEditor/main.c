@@ -44,8 +44,6 @@ char ch_in;
 while (1) {
     displayLine(&ptr);
     ch_in = getInput();
-    printf("Received input: %d\n", ch);
-    fflush(stdout);
     switch (ch_in) {
         case RIGHT:
             moveCursorRight(&ptr);
@@ -87,8 +85,6 @@ int getInput(){
     if (ch == 27) {
         if (getch() == '[') {
             ch = getch();  // get extended key
-            printf("Extended key: %d\n", ch);
-            fflush(stdout);
             return ch;
         }
         return 27;
@@ -111,7 +107,6 @@ void displayLine(linePtr *ptr){
             printf("%c", line[cursor]);
         }
     }
-    fflush(stdout);
 }
 
 void moveCursorLeft(linePtr *ptr){
@@ -128,7 +123,7 @@ void moveCursorRight(linePtr *ptr){
 
 void deleteCharBeforCursor(linePtr *ptr){
     if (ptr->current > ptr->head) {
-        ptr->current--; //move cursor before char then delete
+        ptr->current--;  //move cursor before char then delete
         // shift characters from the current to the left
         for (int i = ptr->current; i < ptr->tail - 1; i++) {
             line[i] = line[i + 1];
@@ -149,7 +144,7 @@ void deleteCharAfterCursor(linePtr *ptr){
         ptr->tail--;
     }
 }
-void insert(linePtr *ptr,char ch){             //first click stand into char ,if input any char overwrite curent char
+void insert(linePtr *ptr,char ch){            //first click stand into char ,if input any char overwrite current char
      if (ptr->tail < line + SIZE - 1) {  // if there space in the array
         if (ptr->current < ptr->tail) {
             line[ptr->current] = ch;  // overwrite current character
