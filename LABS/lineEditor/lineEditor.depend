@@ -14,3 +14,18 @@
 	<unistd.h>
 	<termios.h>
 
+1732599871 source:/home/rahma/Documents/ITI-C-lab/LABS/lineEditor/main.c
+	<stdio.h>
+	<stdlib.h>
+	<termios.h>
+	<unistd.h>
+	<unistd.h>
+	<time.h>
+	"mina.h"
+
+1732493165 /home/rahma/Documents/ITI-C-lab/LABS/lineEditor/mina.h
+	<windows.h>
+	<io.h>
+	<unistd.h>
+	<termios.h>
+

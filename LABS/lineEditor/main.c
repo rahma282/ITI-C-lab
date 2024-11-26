@@ -8,26 +8,26 @@
 
 #define RIGHT 67 //move the cursor right one by one
 #define LEFT  68  //move the cursor left one by one
-#define INSERT 65 //first click stand into char ,second click overwrite  (input up arrow)
+#define UP 65 //first click stand into char ,second click overwrite  (input up arrow) insert
 #define DELETE 66 //delete after cursor  (input down arrow)
 #define BACKSPACE 127  //delete before cursor
 #define HOME 72 //go to first line
 #define END 70   //go to left line
 #define ENTER 10      //exit   (input enter)
 #define SIZE 100   //size of array
-#define SKIP 27
 #define TERMINATOR '\0'
 
 typedef struct linePtr{
-    int current;   //current =0 then curent++
-    int head ;      //head =0;
-    int tail;      //tail = 0;  //size-1
+    int *current=NULL;
+    int *head =NULL;
+    int *tail =NULL;
 
 }linePtr;
 
 char line[SIZE]={0};
 
 //functions prototype
+int getInput();
 void displayLine(linePtr *ptr);
 void moveCursorLeft(linePtr *ptr);    //move to left (left--)
 void moveCursorRight(linePtr *ptr);  //move to right (right++)
@@ -37,45 +37,63 @@ void deleteCharAfterCursor(linePtr *ptr);   //del
 void moveCursorToHome(linePtr *ptr);        //go to begain of the line =head(0)
 void MoveCursorToend(linePtr *ptr);        //go to the end of the line =tail (SIZE -1)
 
-int main()
-{
+int main(){
+linePtr ptr = { .current =line, .head=line, .tail=line};
+char ch_in;
 
- linePtr ptr = { .current =0, .head=0, .tail=0};
-
-   char ch_in;
-    while (1) {
-        displayLine(&ptr);
-        ch_in = getch();
-
-        if (ch_in == SKIP) {  //extended keys
-            ch_in = getch();
-            ch_in = getch();  // Get the second byte to identify the arrow key
-            switch (ch_in) {
-                case RIGHT:
-                    moveCursorRight(&ptr);
-                    break;
-                case LEFT:
-                    moveCursorLeft(&ptr);
-                    break;
-                case HOME:
-                    moveCursorToHome(&ptr);
-                    break;
-                case END:
-                    MoveCursorToend(&ptr);
-                    break;
-                case DELETE:
-                    deleteCharAfterCursor(&ptr);
-                    break;
-            }
-        } else if (ch_in == BACKSPACE) {  //normal keys
+while (1) {
+    displayLine(&ptr);
+    ch_in = getInput();
+    printf("Received input: %d\n", ch);
+    fflush(stdout);
+    switch (ch_in) {
+        case RIGHT:
+            moveCursorRight(&ptr);
+            break;
+        case LEFT:
+            moveCursorLeft(&ptr);
+            break;
+        case HOME:
+            moveCursorToHome(&ptr);
+            break;
+        case END:
+            MoveCursorToend(&ptr);
+            break;
+        case DELETE:
+            deleteCharAfterCursor(&ptr);
+            break;
+        case UP:
+            insert(&ptr, ch_in);
+            break;
+        case BACKSPACE:
             deleteCharBeforCursor(&ptr);
-        } else if (ch_in == ENTER) {
-            break;  // Exit
-        } else {
-            insert(&ptr,ch_in);
-        }
+            break;
+        case ENTER:
+            return 0;  // Exit
+        default:  // input normal char
+            if (ptr.tail < line + SIZE - 1) {
+                insert(&ptr, ch_in);
+            }
+            break;
     }
-    return 0;
+}
+return 0;
+}
+
+int getInput(){
+    char ch = getch();
+    printf("Received input: %d\n", ch);
+    fflush(stdout);
+    if (ch == 27) {
+        if (getch() == '[') {
+            ch = getch();  // get extended key
+            printf("Extended key: %d\n", ch);
+            fflush(stdout);
+            return ch;
+        }
+        return 27;
+    }
+    return ch;  //normal key
 }
 
 void displayLine(linePtr *ptr){
@@ -93,6 +111,7 @@ void displayLine(linePtr *ptr){
             printf("%c", line[cursor]);
         }
     }
+    fflush(stdout);
 }
 
 void moveCursorLeft(linePtr *ptr){
@@ -121,7 +140,7 @@ void deleteCharBeforCursor(linePtr *ptr){
 }
 void deleteCharAfterCursor(linePtr *ptr){
     if (ptr->current < ptr->tail) {
-        // Shift characters from the current position + 1 to the end of the line
+        // shift characters from the current position + 1 to the end of the line
         for (int i = ptr->current; i < ptr->tail - 1; i++) {
             line[i] = line[i + 1];
         }
@@ -131,15 +150,14 @@ void deleteCharAfterCursor(linePtr *ptr){
     }
 }
 void insert(linePtr *ptr,char ch){             //first click stand into char ,if input any char overwrite curent char
-    if (ptr->tail < SIZE - 1) {
-        for (int i = ptr->tail; i > ptr->current; i--) {
-            line[i] = line[i - 1];  // shift characters to the right
+     if (ptr->tail < line + SIZE - 1) {  // if there space in the array
+        if (ptr->current < ptr->tail) {
+            line[ptr->current] = ch;  // overwrite current character
+        } else {
+            line[ptr->current] = ch;
+            ptr->tail++;
         }
-        line[ptr->current] = ch;  // insert the character at the current position
-        ptr->tail++;
-        line[ptr->tail] = TERMINATOR;
-        ptr->current++;  // Move the cursor forward
-        printf("%s" ,line);
+        ptr->current++;
     }
 }
 void moveCursorToHome(linePtr *ptr){
