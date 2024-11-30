@@ -10,7 +10,7 @@ int main()
             num =i*j;
             printf ("%d * %d= %d\n" , i,j,num);
         }
-
+     printf("\n=========================================\n");
    }
    return 0;
 
