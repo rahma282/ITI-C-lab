@@ -9,7 +9,10 @@ int main()
 
     printf("Enter size of the array: ");
     scanf("%d", &size);
-
+    if (size >=100){
+        printf("invalid out of bound , your limit is only 100");
+        return;
+    }
     printf("Enter elements in the array: ");
     for(int i=0; i<size; i++)
     {
